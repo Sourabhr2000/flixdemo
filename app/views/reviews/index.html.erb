@@ -1,0 +1,17 @@
+<ul class="reviews">
+  <% @reviews.each do |review| %>
+    <li>
+      <%="*"*review.stars %><br>
+      <%= pluralize(review.stars, 'star') %>
+      <p>
+        <%= review.comment %>
+      </p>
+      <p>
+        <span class="date">
+          rating by <%= link_to review.user.name, review.user %> <%= time_ago_in_words(review.created_at) %> ago
+        </span>
+      </p>
+      
+    </li>
+  <% end %>
+</ul>

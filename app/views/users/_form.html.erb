@@ -1,0 +1,22 @@
+<%= form_with(model: user, local: true) do |f| %>
+  <%= render "movies/errors", object: user %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name, autofocus: true %><br><br>
+
+  <%= f.label :email %><br>
+  <%= f.email_field :email %><br><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br><br>
+
+  <%= f.label :password_confirmation, "Confirm Password" %><br>
+  <%= f.password_field :password_confirmation %><br><br>
+
+  <% if user.new_record? %>
+    <%= f.submit "Create Account" %>
+  <% else %>
+    <%= f.submit "Update Account" %>
+  <% end %>
+  
+<% end %>
