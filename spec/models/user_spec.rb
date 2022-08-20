@@ -9,7 +9,6 @@ RSpec.describe User, type: :model do
       it 'should return true ' do
         user=User.new(name:"mayank yadav",email:'smple@gmail.com',password:"123456").save
         expect(user).to eq(true)
-        
       end
     end
   

@@ -143,6 +143,45 @@ RSpec.describe Movie, type: :model do
         end
     end
 
+
+    # subject {
+    #     Movie.new(title:"Er. subh",released_on:"12-08-2021",duration:"3",
+    #         description:"this is only for testing .. we are checking movie validation with rspec",
+    #         total_gross:6577,image_file_name:"test",rating:"kl")
+    #   }
+    
+    context 'When movie title is not unique' do 
+        it 'should return false ' do
+            movie=Movie.new(title:"Er. subh",released_on:"12-08-2021",duration:"3",
+                description:"this is only for testing .. we are checking movie validation with rspec",
+                total_gross:6577,image_file_name:"test",rating:"kl")
+            # expect(movie).to eq(false)
+            expect(movie).to_not be_valid
+        end
+    end
+
+
+    context 'When movie duration is not unique' do 
+        it 'should return false ' do
+            movie=Movie.new(title:"Er. subhrathore",released_on:"12-08-2021",duration:"4",
+                description:"this is only for testing .. we are checking movie validation with rspec",
+                total_gross:6577,image_file_name:"test",rating:"kl")
+            # expect(movie).to eq(false)
+            expect(movie).to_not be_valid
+        end
+    end
+
+
+    context 'When movie released_on is not unique' do 
+        it 'should return false ' do
+            movie=Movie.new(title:"Er. subhrathore",released_on:"09-08-2018",duration:"6",
+                description:"this is only for testing .. we are checking movie validation with rspec",
+                total_gross:6577,image_file_name:"test",rating:"kl")
+            # expect(movie).to eq(false)
+            expect(movie).to_not be_valid
+        end
+    end
+
     #test has_many validation
     it { should have_many(:reviews).dependent(:destroy) } 
     it { should have_many(:favorites).dependent(:destroy) }
